@@ -51,12 +51,51 @@ Some of the logging best practices are as:
 - Make you log easy to parse
 - Log for compliance purposes as well
 
-Reference:
+References:
 
 [https://dev.splunk.com/enterprise/docs/developapps/addsupport/logging/loggingbestpractices/](https://dev.splunk.com/enterprise/docs/developapps/addsupport/logging/loggingbestpractices/)
 
 [https://www.comparitech.com/net-admin/log-management-tools/](https://www.comparitech.com/net-admin/log-management-tools/)
 
+[https://www.sentinelone.com/blog/the-10-commandments-of-logging/](https://www.sentinelone.com/blog/the-10-commandments-of-logging/)
+
 ## Q.3.
+
+### Step 1: Setup auditd
+
+1.1 Install `auditd`
+
+```bash
+	sudo apt install auditd
+```
+
+1.2 Enable it at startup
+
+```bash
+systemctl enable auditd
+```
+
+![Untitled](Logging%2004eabc7058434496adc812647979ed56/Untitled.png)
+
+1.2 Optional
+
+Configure the `auditd` log file stored at `sudo nano /etc/audit/auditd.conf`
+
+### Step 2: Watch the file
+
+2.1 Create a file
+
+```bash
+touch sample_file
+echo "anything" >> sample_file
+```
+
+2.2 Watch the file using `auditctl`
+
+```bash
+sudo auditctl -w sample_file -p rwxa
+```
+
+2.3 Watch the logs at  `/var/log/audit/audit.log` by  default, the audit system logs audit messages to the `/var/log/audit/audit.log` file.
 
 ## Q.4.
