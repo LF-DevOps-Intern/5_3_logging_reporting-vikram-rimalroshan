@@ -75,7 +75,7 @@ References:
 systemctl enable auditd
 ```
 
-![Untitled](Logging%2004eabc7058434496adc812647979ed56/Untitled.png)
+![Untitled](images/Untitled.png)
 
 1.2 Optional
 
